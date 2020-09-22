@@ -12,15 +12,17 @@ with open("all.cm") as file:
 p = Parser()
 data_counter = p.parse(data)
 
-print(data_counter.most_common(10))
-
-[('find', 7846), ('|', 6487), ('.', 3775), ('-name', 3616), ('-type', 3403), ('f', 2539), (';', 2389), ('{}', 2275), ('-exec', 2108), ('xargs', 1546)]
+print(data_counter.most_common(5))
+[('find', 7846),
+ ('|', 6487),
+ ('.', 3775),
+ ('-name', 3616),
+ ('-type', 3403)]
 ```
-
-![alt text](img/absolute_element_counts.png "Absolute Element Counts")
 
 ![alt text](img/wordcloud.png "WordCloud of most common elements")
 
+![alt text](img/absolute_element_counts.png "Absolute Element Counts")
 
 
 Next steps:
