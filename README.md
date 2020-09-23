@@ -11,14 +11,32 @@ with open("all.cm") as file:
 
 p = Parser()
 data_counter = p.parse(data)
-
 print(data_counter.most_common(5))
 
+[Out]:
     [('find', 7846),
     ('|', 6487),
     ('.', 3775),
     ('-name', 3616),
     ('-type', 3403)]
+
+encoded_X = p.encode(mode="onehot")
+print(encoded_X[0])
+
+[Out]:
+    array([1, 1, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+       0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+       0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+       0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+       0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
+```
+
+At this point data is ready to be sup
+```
+mymodel.fit(X,y)
+```
+
+Some ideas of exploratory data analysis can be found under `/eda/`:
 ```
 
 ![alt text](img/wordcloud.png "WordCloud of most common elements")
@@ -26,5 +44,6 @@ print(data_counter.most_common(5))
 
 
 Next steps:
-1. Implement POS tagger
-2. Encoding: TF-IDF, LabelEncoder, OneHotEncoder
+1. Encoding: TF-IDF
+2. ML application example
+3. Implement POS tagger
