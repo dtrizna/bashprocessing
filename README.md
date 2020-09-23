@@ -31,7 +31,7 @@ print(encoded_X[0])
        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
 ```
 
-At this point data is ready to be sup
+At this point data is ready to be supplied as input for your ML model:
 ```
 mymodel.fit(X,y)
 ```
