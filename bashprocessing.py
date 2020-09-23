@@ -3,6 +3,7 @@ import bashlex
 import re
 import nltk
 from collections import Counter, defaultdict
+from sklearn.preprocessing import LabelEncoder
 
 class Parser():
 
@@ -178,27 +179,43 @@ class Parser():
         return self.global_counter, self.corpus
     
 
-    def encode(self, cntr, mode='tf-idf', data=None, sklearn=False):
-        if not self.data and not data:
-            print("[!] Please specify your data or parse it beforehand!")
-            return None
-        else:
-            data = data if data else self.data
-        
+    def encode(self, mode='tf-idf', corpus=None, cntr=None, top_tokens=100):
+        if not corpus or not cntr:
+            corpus = self.corpus
+            cntr = self.global_counter
+            if not corpus or not cntr:
+                raise Exception("[!] Please specify your corpus or use Parser().parse() to build it beforehand!")
+
         if mode == 'tf-idf':
-            # TODO
-            # Need to create corpus of data: 
-            # list of documents, where documents is list of tokens
-            """
+            # can't use sklearn, as it performs it's own tokenization
+            # but we need to rely on our own realisation            
             word_idf_values = defaultdict(float)
-            l = len(cntr.keys())
-            for i,token in enumerate(list(cntr)):
-            
+            l = len(corpus)
+
+            for i,token in enumerate(list(cntr)):            
                 if self.verbose:
                     print(f"[!] TF-IDF encoding: {i}\{l}", end="\r")
                 cmd_containing_word = 0
-                for i, cmd in enumerate(data):
-                    print(self.parse([cmd]))
-                    #if token in self.parse([cmd]):
-                    #    cmd_containing_word += 1
-                #word_idf_values[token] = np.log(len(data)/(1 + cmd_containing_word))""" 
+                for j, cmd in enumerate(corpus):
+                    if token in cmd:
+                        cmd_containing_word += 1
+                word_idf_values[token] = np.log(len(corpus)/(1 + cmd_containing_word))
+
+            return word_idf_values
+        
+        elif mode == 'labels':
+            top_token_list = list(dict(cntr.most_common(top_tokens)).keys())
+            output = self.corpus.copy()
+            le = LabelEncoder().fit(top_token_list+["OTHER"])
+            for i,cmd in enumerate(corpus):
+                output[i] = le.transform([x if x in top_token_list else "OTHER" for x in cmd])
+            return output
+        
+        elif mode == 'onehot':
+            top_token_list = list(dict(cntr.most_common(top_tokens)).keys())
+            output = np.zeros(shape=(len(corpus), top_tokens), dtype=int)
+            for i,cmd in enumerate(corpus):
+                for j,token in enumerate(top_token_list):
+                    if token in cmd:
+                        output[i,j] = 1
+            return output
