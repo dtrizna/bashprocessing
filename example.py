@@ -45,6 +45,7 @@ array([1, 1, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
 """
 
+# TF-IDF: NOT YET IMPLEMENTED
 tfidf = p.encode(mode="tf-idf")
 import pdb; pdb.set_trace()
 """
