@@ -5,7 +5,7 @@ import string
 import sys
 
 from collections import Counter
-from os import path
+from os import path, getcwd
 
 from wordcloud import WordCloud, ImageColorGenerator
 from PIL import Image
@@ -33,7 +33,7 @@ clean_dict = {key:counter[key] for key in counter.keys() if not all(key.isdigit(
 
 # WORDCLOUD
 
-d = path.dirname(__file__) if "__file__" in locals() else os.getcwd()
+d = path.dirname(__file__) if "__file__" in locals() else getcwd()
 
 tuxmask = np.array(Image.open(path.join(d, "../img/Tux.png")))#.convert("1")).astype(int)
 img_color = ImageColorGenerator(tuxmask)
