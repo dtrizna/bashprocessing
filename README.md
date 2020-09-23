@@ -10,7 +10,7 @@ with open("all.cm") as file:
     data = file.readlines()
 
 p = Parser()
-data_counter = p.parse(data)
+data_counter, data_corpus = p.parse(data)
 print(data_counter.most_common(5))
 
 [Out]:
