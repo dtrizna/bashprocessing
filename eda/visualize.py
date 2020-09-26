@@ -34,26 +34,20 @@ clean_dict = {key:counter[key] for key in counter.keys() if not all(key.isdigit(
 # WORDCLOUD
 
 d = path.dirname(__file__) if "__file__" in locals() else getcwd()
-
-tuxmask = np.array(Image.open(path.join(d, "../img/Tux.png")))#.convert("1")).astype(int)
-img_color = ImageColorGenerator(tuxmask)
-
-wc = WordCloud(background_color="white", \
-                stopwords=bash_stopwords, \
-                max_words=300, \
-                contour_width=3, \
-                contour_color='steelblue')#,\
-                #mask=tuxmask) # Cannot make to work it w/ mask ....
-
+# Read the image and prepare the text and stopwords
+d = path.dirname(file) if "file" in locals() else os.getcwd()
+tux_coloring = np.array(Image.open(path.join(d, "Tux3.jpg")))
+image_colors = ImageColorGenerator(tux_coloring)
+text = common_pos_wordcloud
+wc = WordCloud(background_color="white", max_words=100, mask=tux_coloring,
+               stopwords=bash_stopwords, max_font_size=40)
 # generate word cloud
 wc.generate_from_frequencies(dict(clean_dict))
-plt.figure(figsize=(12,8))
-plt.imshow(wc, interpolation='bilinear')
-plt.axis("off")
+# recolor the penguin and show the image
+plt.imshow(wc.recolor(color_func=image_colors), interpolation="bilinear")
+plt.axis('off')
 plt.show()
-#plt.savefig('../img/wordcloud.png', bbox_inches='tight')
-#plt.close()
-
+plt.savefig("wordcloud.png")
 
 # BARCHART
 
