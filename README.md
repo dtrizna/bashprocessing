@@ -38,8 +38,8 @@ mymodel.fit(X,y)
 
 Some ideas of exploratory data analysis can be found under `/eda/`:
 
-<img src="img/Tux_wordcloud.png" alt="WordCloud of most common elements" width="200"/>
-<img src="img/absolute_element_counts.png" alt="Absolute Element Counts">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="img/Tux_wordcloud.png" alt="WordCloud of most common elements" width="400"/>
+<img src="img/absolute_element_counts.png" alt="Absolute Element Counts" width="600">
 
 
 Next steps:
