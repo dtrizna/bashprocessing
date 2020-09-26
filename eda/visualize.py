@@ -33,20 +33,27 @@ clean_dict = {key:counter[key] for key in counter.keys() if not all(key.isdigit(
 
 # WORDCLOUD
 
-d = path.dirname(__file__) if "__file__" in locals() else getcwd()
 # Read the image, prepare the wordcloud and image
-d = path.dirname(file) if "file" in locals() else os.getcwd()
-tux_coloring = np.array(Image.open(path.join(d, "Tux3.jpg")))
+d = path.dirname(__file__) if "__file__" in locals() else getcwd()
+tux_coloring = np.array(Image.open(path.join(d, "../img/Tux_mask.jpg")))
+
 image_colors = ImageColorGenerator(tux_coloring)
-wc = WordCloud(background_color="white", max_words=100, mask=tux_coloring,
-               stopwords=bash_stopwords, max_font_size=40)
+wc = WordCloud(background_color="white", max_words=200, mask=tux_coloring,
+               stopwords=bash_stopwords)#, max_font_size=40)
+
 # generate word cloud
 wc.generate_from_frequencies(dict(clean_dict))
 # recolor the penguin and show the image
 plt.imshow(wc.recolor(color_func=image_colors), interpolation="bilinear")
 plt.axis('off')
+
+#savefile = "img/Tux_wordcloud.png"
+#plt.savefig(savefile, bbox_inches="tight")
+# For some reason .savefig() provides weak quality...
+# When saved manually quality is great!
+
 plt.show()
-plt.savefig("wordcloud.png")
+
 
 # BARCHART
 
