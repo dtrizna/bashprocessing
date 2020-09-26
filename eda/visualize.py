@@ -34,7 +34,7 @@ clean_dict = {key:counter[key] for key in counter.keys() if not all(key.isdigit(
 # WORDCLOUD
 
 d = path.dirname(__file__) if "__file__" in locals() else getcwd()
-# Read the image and prepare the text and stopwords
+# Read the image
 d = path.dirname(file) if "file" in locals() else os.getcwd()
 tux_coloring = np.array(Image.open(path.join(d, "Tux3.jpg")))
 image_colors = ImageColorGenerator(tux_coloring)
