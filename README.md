@@ -1,6 +1,4 @@
-Pre-processing depends on `bashlex` (https://github.com/idank/bashlex) library.  
-  
-Dataset (i.e. `all.cm`) is based on `nl2bash` paper (https://arxiv.org/abs/1802.08979; https://github.com/TellinaTool/nl2bash).  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="img/Tux_wordcloud.png" alt="WordCloud of most common elements" width="400"/>
 
 Example usage:
 ```
@@ -36,13 +34,16 @@ At this point data is ready to be supplied as input for your ML model:
 mymodel.fit(X,y)
 ```
 
+Pre-processing depends on `bashlex` (https://github.com/idank/bashlex) library.  
+  
+Dataset (i.e. `all.cm`) is based on `nl2bash` paper (https://arxiv.org/abs/1802.08979; https://github.com/TellinaTool/nl2bash).  
+
 Some ideas of exploratory data analysis can be found under `/eda/`:
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="img/Tux_wordcloud.png" alt="WordCloud of most common elements" width="400"/>
 <img src="img/absolute_element_counts.png" alt="Absolute Element Counts" width="600">
 
 
 Next steps:
-1. Encoding: TF-IDF
-2. ML application example
+1. ML application example
+2. Encoding: TF-IDF
 3. Implement POS tagger
