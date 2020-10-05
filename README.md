@@ -1,6 +1,6 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="img/Tux_wordcloud.png" alt="WordCloud of most common elements" width="400"/>
 
-Example usage:
+## Example usage
 ```
 from bashprocessing import Parser
 
@@ -31,8 +31,10 @@ print(encoded_X[0])
 
 At this point data is ready to be supplied as input for your ML model:
 ```
-mymodel.fit(X,y)
+mymodel.fit(encoded_X,y)
 ```
+
+## Notes
 
 Pre-processing depends on `bashlex` (https://github.com/idank/bashlex) library.  
   
