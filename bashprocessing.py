@@ -179,7 +179,7 @@ class Parser():
         return self.global_counter, self.corpus
     
 
-    def encode(self, mode='tf-idf', corpus=None, cntr=None, top_tokens=100):
+    def encode(self, mode='onehot', corpus=None, cntr=None, top_tokens=100):
         if not corpus or not cntr:
             corpus = self.corpus
             cntr = self.global_counter
