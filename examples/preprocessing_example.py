@@ -1,6 +1,6 @@
 from bashprocessing import Parser
 
-with open(r'data/bashlex.cm', encoding='utf-8') as f:
+with open(r'data/nl2bash.cm', encoding='utf-8') as f:
     data = f.readlines()
 
 p = Parser(debug=True, verbose=True)

@@ -37,7 +37,7 @@ mymodel.fit(encoded_X,y)
 ## Notes
 
 - Pre-processing depends on `bashlex` (https://github.com/idank/bashlex) library.  
-- Benign example dataset (i.e. `data/bashlex.cm`) is based on `nl2bash` paper (https://arxiv.org/abs/1802.08979; https://github.com/TellinaTool/nl2bash).
+- Benign example dataset (i.e. `data/nl2bash.cm`) is based on `nl2bash` paper (https://arxiv.org/abs/1802.08979; https://github.com/TellinaTool/nl2bash).
 - Malicious example dataset is collected from various Penetration Testing resources and scripts, some examples:
     - [Reverse Shell Cheat Sheet](https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/Methodology%20and%20Resources/Reverse%20Shell%20Cheatsheet.md)
     - [LinEnum.sh Script](https://github.com/rebootuser/LinEnum/blob/master/LinEnum.sh)
