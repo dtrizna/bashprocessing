@@ -1,4 +1,4 @@
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="img/Tux_wordcloud.png" alt="WordCloud of most common elements" width="400"/>
+<p align="center"><img src="img/Tux_wordcloud.png" alt="WordCloud of most common elements" width="400"/>
 
 ## Example usage
 ```
