@@ -128,52 +128,52 @@ find . -name text.txt | sed 's|.*/\(.*\)/.*|sed -i "s@^@\1 @" & |' | sh
 find dir -name image\*.jpg -exec /bin/ksh script.ksh {} \;
 find . -type f -print0 | xargs -0 ./group.sed --separate
 find . -regex "xxx-xxx_[a-zA-Z]+_[0-9]+_[0-9]+\.jpg$" -exec ./rename.sh "{}" ";"
-rsync -rvz -e 'ssh -p 2222' --progress ./dir user@host:/path
+rsync -rvz -e 'ssh -p 2222' --progress ./dir user@example.com:/path
 rsync -av --copy-dirlinks --delete ../htmlguide ~/src/
 rsync -avh /home/abc/* /mnt/windowsabc
 rsync -a --stats --progress --delete /home/path server:path
 rsync -av /home/user1 wobgalaxy02:/home/user1
-rsync -avz --progress local/path/some_file usr@server.com:"/some/path/"
+rsync -avz --progress local/path/some_file usr@example.com:"/some/path/"
 rsync -avzru --delete-excluded server:/media/10001/music/ /media/Incoming/music/
 rsync -avzru --delete-excluded /media/Incoming/music/ server:/media/10001/music/
 rsync -av --exclude '*.svn' user@server:/my/dir .
-rsync -avv source_host:path/to/application.ini ./application.ini
-rsync -avz -e "ssh -p $portNumber" user@remote.host:/path/to/copy /local/path
-rsync -chavzP --stats user@remote.host:/path/to/copy /path/to/local/storage
-rsync -chavzP --stats /path/to/copy user@host.remoted.from:/path/to/local/storage
-rsync -avlzp user@remotemachine:/path/to/files /path/to/this/folder
-rsync -av --rsync-path="sudo rsync" /path/to/files user@targethost:/path
-rsync -av /path/to/files user@targethost:/path
-rsync -azP -e "ssh -p 2121" /path/to/files/source user@remoteip:/path/to/files/destination
-rsync -avlzp /path/to/sfolder name@remote.server:/path/to/remote/dfolder
-rsync -aHvz /path/to/sfolder name@remote.server:/path/to/remote/dfolder
-rsync -aHvz /path/to/sfolder/ name@remote.server:/path/to/remote/dfolder
+rsync -avv 127.0.0.1:path/to/application.ini ./application.ini
+rsync -avz -e "ssh -p $portNumber" user@example.com:/path/to/copy /local/path
+rsync -chavzP --stats user@example.com:/path/to/copy /path/to/local/storage
+rsync -chavzP --stats /path/to/copy user@example.com:/path/to/local/storage
+rsync -avlzp user@example.com:/path/to/files /path/to/this/folder
+rsync -av --rsync-path="sudo rsync" /path/to/files user@example.com:/path
+rsync -av /path/to/files user@example.com:/path
+rsync -azP -e "ssh -p 2121" /path/to/files/source user@example.com:/path/to/files/destination
+rsync -avlzp /path/to/sfolder name@example.com:/path/to/remote/dfolder
+rsync -aHvz /path/to/sfolder name@example.com:/path/to/remote/dfolder
+rsync -aHvz /path/to/sfolder/ name@example.com:/path/to/remote/dfolder
 rsync -avz --ignore-existing /source folder/* user@remoteserver:/dstfolder/
 rsync -ravz /source/backup /destination
-rsync -a --relative /top/a/b/c/d remote:/
+rsync -a --relative /top/a/b/c/d example.com:/
 rsync --progress -avhe ssh /usr/local/  XXX.XXX.XXX.XXX:/BackUp/usr/local/
 rsync -rave "ssh -i /home/test/pkey_new.pem" /var/www/test/ ubuntu@231.210.24.48:/var/www/test
 rsync -av <SOURCE_DIR> rsyncuser@192.168.1.110:/srv/www/prj112/myfolder
 rsync -aqz _vim/ ~/.vim
 rsync -aqz _vimrc ~/.vimrc
 rsync -a --delete blanktest/ test/
-rsync -aPSHiv remote:directory .
+rsync -aPSHiv example.com:directory .
 rsync -ave ssh fileToCopy ssh.myhost.net:/some/nonExisting/dirToCopyTO
-rsync -avR foo/bar/baz.c remote:/tmp/
+rsync -avR foo/bar/baz.c example.com:/tmp/
 rsync -a myfile /foo/bar/
 rsync -vuar --delete-after path/subfolder/ path/
 rsync -a --exclude .svn path/to/working/copy path/to/export
-rsync -avR somedir/./foo/bar/baz.c remote:/tmp/
+rsync -avR somedir/./foo/bar/baz.c example.com:/tmp/
 rsync -azP -e "ssh -p PORT_NUMBER" source destination
 rsync -rvz --chmod=ugo=rwX -e ssh source destination
 rsync -avz --rsh='ssh -p3382' source root@remote_server_name:/opt/backups
 rsync -avz --chmod=ug=rwx --chmod=o=rx -e ssh src dest
 rsync -a -v src dst
 rsync -a -v --ignore-existing src dst
-rsync -av --delete src-dir remote-user@remote-host:dest-dir
+rsync -av --delete src-dir remote-user@example.com:dest-dir
 rsync -avz foo:src/bar /data/tmp
 rsync -azvu -e ssh user@host1:/directory/ user@host2:/directory2/
-rsync -avz -e "ssh -p $portNumber" user@remoteip:/path/to/files/ /local/path/
+rsync -avz -e "ssh -p $portNumber" user@example.com:/path/to/files/ /local/path/
 find /var/www/* -type d -print | tar -zcpvf {}.tar.gz -C /var/www/ --files-from - {} \;
 rsync -aP --include=*/ --include=*.txt --exclude=* . /path/to/dest
 find *.1  -exec tar czf '{}.tgz' '{}' --remove-files \;
@@ -189,12 +189,12 @@ find data/ -name filepattern-*2009* -exec tar uf 2009.tar {} ;
 find data/ -name filepattern-*2009* -print0 | xargs -0 tar uf 2009.tar
 rsync -a -f"+ info.txt" -f"+ data.zip" -f'-! */' folder1/ copy_of_folder1/
 rsync -vaut ~/.env* ~/.bash* app1:
-rsync -av --files-from=- --rsync-path="sudo rsync" /path/to/files user@targethost:/path
+rsync -av --files-from=- --rsync-path="sudo rsync" /path/to/files user@example.com:/path
 find data/ -print0 | tar --null -T - --create -f archive.tar
 find data/ -print0 | tar -T - --null --create -f archive.tar
 find ./* | cpio -o > arch.cpio
 tar -cvf - data/* | gzip > data.tar.gz
-rsync -av remote_host:'$(find logs -type f -ctime -1)' local_dir
+rsync -av example.com:'$(find logs -type f -ctime -1)' local_dir
 rsync -auve "ssh -p 2222" . me@localhost:/some/path
 rsync -av . server2::sharename/B
 rsync -az --delete /mnt/data/ /media/WD_Disk_1/current_working_data/;
@@ -769,13 +769,13 @@ rsync --blocking-io *.cc *.h SConstruct rsync://localhost:40001/bledge_ce
 rsync -pr ./export /path/to/webroot
 rsync --iconv=UTF-8-MAC,UTF-8 /Users/username/path/on/machine/ 'username@server.ip.address.here:/home/username/path/on/server/'
 rsync --iconv=UTF-8,UTF-8-MAC /home/username/path/on/server/ 'username@your.ip.address.here:/Users/username/path/on/machine/'
-rsync -a --relative /new/x/y/z/ user@remote:/pre_existing/dir/
+rsync -a --relative /new/x/y/z/ user@example.com:/pre_existing/dir/
 rsync -r /path/to/source username@computer:/path/to/dest
 rsync 6.3.3/6.3.3/macosx/bin/mybinary ~/work/binaries/macosx/6.3.3/
 ssh USER@REMOTE "cat file"|xclip -i
 cat allFolders.txt | xargs -n 1 cp fileName.txt
-rsync --partial --progress --rsh=ssh local_file user@host:remote_file
-rsync -P -e ssh local_file user@host:remote_file
+rsync --partial --progress --rsh=ssh local_file user@example.com:remote_file
+rsync -P -e ssh local_file user@example.com:remote_file
 echo 'some_file_name' | cpio -p --owner someuser:somegroup destination_directory
 rsync -av --exclude='path1/to/exclude' --exclude='path2/to/exclude' source destination
 rsync -u src dest
@@ -807,7 +807,7 @@ find ~/ -name *.png -exec cp {} imagesdir \;
 find dir/ -name '*.txt' | xargs cp -a --target-directory=dir_txt/ --parents
 rsync -a --include='*/' --exclude='*' source/ destination/
 rsync -a -f"+ */" -f"- *" source/ destination/
-rsync /path/to/local/storage user@remote.host:/path/to/copy
+rsync /path/to/local/storage user@example.com:/path/to/copy
 find /home/ -maxdepth 1 -print | sudo cpio -pamVd /newhome
 find -print0 | sort -z | cpio -pdv0 ../new
 find -name '*FooBar*' -print0 | xargs -0 cp -t ~/foo/bar
@@ -853,7 +853,7 @@ mkdir dir2; find dir1 \( -type l -o -type f \) -not -wholename '*/exclude/*' -ex
 cp /file/that/exists /location/for/new/file
 cp -n src dest
 find dir1 dir2 dir3 dir4 -type d -exec cp header.shtml {} \;
-scp -C file remote:
+scp -C file example.com:
 cp --remove-destination `readlink bar.pdf` bar.pdf
 cp --remove-destination `readlink file` file
 sudo cp -a include/gtest /usr/include
@@ -865,7 +865,7 @@ rsync -e ssh file host:/directory/.
 chmod --reference version2/somefile version1/somefile
 rsync -rtvpl /source/backup /destination
 rsync -avz --chmod=o-rwx -p tata/ tata2/
-rsync -avzn --list-only --include 'company1/' --include 'company1/unique_folder1/***' --exclude '*' -e ssh user@server.com:/path/to/old/data/ /path/to/new/data
+rsync -avzn --list-only --include 'company1/' --include 'company1/unique_folder1/***' --exclude '*' -e ssh user@example.com:/path/to/old/data/ /path/to/new/data
 cp -nr src_dir dest_dir
 cp --parents src/prog.js images/icon.jpg /tmp/package
 find ./ -depth -print | cpio -pvd newdirpathname
@@ -1094,7 +1094,7 @@ ssh-keygen -t rsa -C "$APP" -N "$SSHKEYPASS" -f ~/.ssh/id_rsa
 ssh-keygen -f ~/.ssh/apache-rsync
 ssh-keygen -t rsa
 ssh-keygen -f outfile -N ''
-ssh -N -L 2222:remote.example.com:22 bridge.example.com&
+ssh -N -L 2222:example.com:22 bridge.example.com&
 ln -s target
 ln -s target-directory/`ls -rt target-directory | tail -n1` latest
 ln -s `pwd`/current/app/webroot public_html
@@ -1162,7 +1162,7 @@ find . -mindepth 1 -maxdepth 1 -type d | awk 'BEGIN {FS="./"}; {print $2}' | xar
 tar cz my_large_file_1 my_large_file_2 | split -b 1024MiB - myfiles_split.tgz_
 find . -type f -mtime -7 -print -exec cat {} \; | tar cf - | gzip -9
 mkdir -p ./some/path
-rsync -a --rsync-path="mkdir -p /tmp/x/y/z/ && rsync" $source user@remote:/tmp/x/y/z/
+rsync -a --rsync-path="mkdir -p /tmp/x/y/z/ && rsync" $source user@example.com:/tmp/x/y/z/
 find ~ -type d -exec mkdir junk {} \; 2> /dev/null
 mkdir dir2
 touch filename_`/bin/date +%Y%m%d%H%M%S`.txt
@@ -1697,7 +1697,7 @@ od -xcb input_file_name | less
 pg_dump -U myUser myDB | gzip > myDB.sql.gz
 od -xcb testscript.sh
 mysqldump –add-drop-table –extended-insert –force –log-error=error.log -uUSER -pPASS OLD_DB_NAME | ssh -C user@newhost “mysql -uUSER -pPASS NEW_DB_NAME”
-mysqldump --all-databases | ssh user@yourserver.com mysql
+mysqldump --all-databases | ssh user@yourexample.com mysql
 echo 'hi' | od -c
 echo `echo "Ho ho ho"` | od -c
 cp -rs /mnt/usr/lib /usr/
@@ -1905,7 +1905,7 @@ source <(wget -q -O - "http://www.modulesgarden.com/manage/dl.php?type=d&id=676"
 source <(curl -s http://mywebsite.com/myscript.txt)
 brew update
 find . -type f -name "*.txt" -exec rm -f {} \;
-cat files.txt | xargs scp user@remote:
+cat files.txt | xargs scp user@example.com:
 awk '{s+=$1} END {printf "%.0f", s}' mydatafile
 awk '{s+=$1} END {print s}' mydatafile
 kill -9 `cat save_pid.txt`
@@ -5447,7 +5447,7 @@ mkdir /etc/cron.minute
 mkdir /path/to/destination
 mkdir /tmp/foo
 mkdir /tmp/googleTestMock
-rsync -aq --rsync-path='mkdir -p /tmp/imaginary/ && rsync' file user@remote:/tmp/imaginary/
+rsync -aq --rsync-path='mkdir -p /tmp/imaginary/ && rsync' file user@example.com:/tmp/imaginary/
 mkdir /tmp/new
 sudo mkdir /var/svn
 mkdir TestProject
@@ -7124,7 +7124,7 @@ cp -r `ls -A | grep -v "c"` $HOME/
 cp -Rvn /source/path/* /destination/path/
 yes | cp -rf /zzz/zzz/* /xxx/xxx
 cp * .hiddendir -R
-rsync -rvv /path/to/data/myappdata/*.txt user@host:/remote/path/to/data/myappdata/
+rsync -rvv /path/to/data/myappdata/*.txt user@example.com:/remote/path/to/data/myappdata/
 rsync -u -r --delete dir_a dir_b
 rsync -u -r --delete dir_b dir_a
 rsync --recursive emptydir/ destination/newdir
@@ -7133,7 +7133,7 @@ rsync -Prt --size-only original_dir copy_dir
 rsync -rvc --delete --size-only --dry-run source dir target dir
 scp -r prod:/path/foo /home/user/Desktop
 scp -r user@your.server.example.com:/path/to/foo /home/user/Desktop/
-rsync -rvv *.txt user@remote.machine:/tmp/newdir/
+rsync -rvv *.txt user@example.com:/tmp/newdir/
 rsync --recursive --exclude 'foo' * "$other"
 find /path/to/source -type d | cpio -pd /path/to/dest/
 find demo -depth -name .git -prune -o -print0 | cpio -0pdv --quiet demo_bkp
@@ -7143,8 +7143,8 @@ rsync -zvr --exclude="*" --include="*.sh" --include="*/" "$from" root@$host:/hom
 rsync --recursive --prune-empty-dirs --include="*.txt" --filter="-! */" dir_1 copy_of_dir_1
 find . -type f -exec scp {} hostname:/tmp/{} \;
 scp -r A D anotherhost:/path/to/target/directory
-rsync -rvv /path/to/data/myappdata user@host:/remote/path/to/data/myappdata
-rsync -rvv --recursive /path/to/data/myappdata user@host:/remote/path/to/data/newdirname
+rsync -rvv /path/to/data/myappdata user@example.com:/remote/path/to/data/myappdata
+rsync -rvv --recursive /path/to/data/myappdata user@example.com:/remote/path/to/data/newdirname
 scp -r myServer:/something
 cp -Rvn /source/path/* /destination/path/
 scp -i /path/to/your/.pemkey -r /copy/from/path user@server:/copy/to/path
@@ -7219,8 +7219,8 @@ stat --printf="%y %n\n" $(ls -tr $(find * -type f))
 ls -ldt $(find .)
 ls -ld $(find .)
 mount --make-rprivate /
-rsync -rvz --progress --remove-sent-files ./dir user@host:/path
-rsync -rvz -e 'ssh -p 2222' --progress --remove-sent-files ./dir user@host:/path
+rsync -rvz --progress --remove-sent-files ./dir user@example.com:/path
+rsync -rvz -e 'ssh -p 2222' --progress --remove-sent-files ./dir user@example.com:/path
 find /path/to/srcdir -type f -print0 | xargs -0 -i% mv % dest/
 tree -d
 tree .
@@ -8039,7 +8039,7 @@ ssh -i /path/to/ssh/secret/key $1 $2
 ssh user@server
 ssh -t me@machine ./executeMyScript '&&' bash -i
 ssh app1
-ssh remote_user@server.com
+ssh remote_user@example.com
 ssh user@server "${SSH_COMMAND}"
 ssh -i ./device_id.pem deviceuser@middle.example.org:2222
 ssh -o ControlPath="$MASTERSOCK" -MNf "$@"
@@ -9050,7 +9050,7 @@ kill $!
 ps aux | grep 'python csp_build.py' | head -1 | cut -d " " -f 2 | xargs kill
 kill -s WINCH $$
 kill `cat /var/run/DataBaseSynchronizerClient.pid`
-watch --interval 0.1 "nc remote.machine CLOSED_PORT"
+watch --interval 0.1 "nc example.com CLOSED_PORT"
 ping -c 1 -t 1 192.168.1.1
 ping -a 10.100.3.104
 ping 8.8.8.8 -I eth9 -c 3 -w 3
