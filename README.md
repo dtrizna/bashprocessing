@@ -36,16 +36,20 @@ mymodel.fit(encoded_X,y)
 
 ## Notes
 
-Pre-processing depends on `bashlex` (https://github.com/idank/bashlex) library.  
-  
-Dataset (i.e. `all.cm`) is based on `nl2bash` paper (https://arxiv.org/abs/1802.08979; https://github.com/TellinaTool/nl2bash).  
+- Pre-processing depends on `bashlex` (https://github.com/idank/bashlex) library.  
+- Benign example dataset (i.e. `data/bashlex.cm`) is based on `nl2bash` paper (https://arxiv.org/abs/1802.08979; https://github.com/TellinaTool/nl2bash).
+- Malicious example dataset is collected from various Penetration Testing resources and scripts, some examples:
+    - [Reverse Shell Cheat Sheet](https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/Methodology%20and%20Resources/Reverse%20Shell%20Cheatsheet.md)
+    - [LinEnum.sh Script](https://github.com/rebootuser/LinEnum/blob/master/LinEnum.sh)
+    - [Linux Privilege Escalation Guide](https://blog.g0tmi1k.com/2011/08/basic-linux-privilege-escalation/)
 
-Some ideas of exploratory data analysis can be found under `/eda/`:
+> Note that datasets are normalized so remote host is specified as `example.com`in both command sets.
+
+- Some ideas of exploratory data analysis and visualiations can be found under `/eda/`:
 
 <img src="img/absolute_element_counts.png" alt="Absolute Element Counts" width="600">
 
+## Potential improvements
 
-Next steps:
-1. ML application example
-2. Encoding: TF-IDF
-3. Implement POS tagger
+1. Encoding: TF-IDF
+2. POS tagger
