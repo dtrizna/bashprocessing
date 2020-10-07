@@ -136,7 +136,7 @@ class Parser():
         return local_cntr, local_tokens
 
     
-    def parse(self, data, ret='counter'):
+    def tokenize(self, data, ret='counter'):
         self.data = data
         self.global_counter = Counter()
         self.corpus = []
@@ -184,7 +184,7 @@ class Parser():
             corpus = self.corpus
             cntr = self.global_counter
             if not corpus or not cntr:
-                raise Exception("[!] Please specify your corpus or use Parser().parse() to build it beforehand!")
+                raise Exception("[!] Please specify your corpus or use Parser().tokenize() to build it beforehand!")
 
         if mode == 'tf-idf':
             # can't use sklearn, as it performs it's own tokenization
