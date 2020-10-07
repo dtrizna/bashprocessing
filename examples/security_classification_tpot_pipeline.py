@@ -53,8 +53,9 @@ scores = cross_validate(exported_pipeline, X, y, cv=10,\
 
 
 for score in scores:
-    print(f"\nScore: {score}")
-    print(scores[score])
+    if 'time' not in score:
+        print(f"\n{score}:")
+        print("\t",round(np.mean(scores[score]),4),"%")
 
 import pdb;pdb.set_trace()
 print("[!] Training RandomOverSampler()...")
