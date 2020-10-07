@@ -17,15 +17,19 @@ sys.path.append(path.abspath(scriptpath))
 
 from bashprocessing import Parser
 
-try:
-    with open('all.cm') as f:
-        data = f.readlines()
-except FileNotFoundError:
-    with open('../all.cm') as f:
-        data = f.readlines()
+def get_data(filepath):
+    try:
+        with open('../' + filepath) as f:
+            data = f.readlines()
+    except FileNotFoundError:
+        with open(filepath) as f:
+            data = f.readlines()
+    return data
+
+nl2bash = get_data('data/nl2bash.cm')
 
 p = Parser(verbose=True)
-counter, corpus = p.parse(data)
+counter, corpus = p.tokenize(nl2bash)
 
 bash_stopwords = [key for key in counter.keys() if all(key.isdigit() or len(key) < 3 or j in string.punctuation for j in key)]
 clean_dict = {key:counter[key] for key in counter.keys() if not all(key.isdigit() or len(key) < 3 or j in string.punctuation for j in key)}
@@ -63,6 +67,27 @@ sns.set_theme(style="whitegrid")
 sns.set(font_scale=1.4)
 plt.figure(figsize=(14,6))
 bars = sns.barplot(x=list(X), y=list(Y), palette="Blues_d")
+#bars.get_figure().savefig("../img/absolute_element_counts.png")
+plt.show()
+#plt.close()
+
+# BARCHART MALICIOUS
+
+mal = get_data('data/malicious.cm')
+
+p = Parser(verbose=True)
+counter, corpus = p.tokenize(mal)
+
+bash_stopwords = [key for key in counter.keys() if all(key.isdigit() or len(key) < 3 or j in string.punctuation for j in key)]
+clean_dict = {key:counter[key] for key in counter.keys() if not all(key.isdigit() or len(key) < 3 or j in string.punctuation for j in key)}
+
+
+X,Y = zip(*Counter(clean_dict).most_common(12))
+
+sns.set_theme(style="whitegrid")
+sns.set(font_scale=1.4)
+plt.figure(figsize=(14,6))
+bars = sns.barplot(x=list(X), y=list(Y), palette="rocket")
 #bars.get_figure().savefig("../img/absolute_element_counts.png")
 plt.show()
 #plt.close()
