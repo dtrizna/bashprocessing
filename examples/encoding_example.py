@@ -1,3 +1,9 @@
+import sys
+from os import path 
+
+scriptpath = ".."
+sys.path.append(path.abspath(scriptpath))
+
 from bashprocessing import Parser
 
 with open(r'data/nl2bash.cm', encoding='utf-8') as f:
