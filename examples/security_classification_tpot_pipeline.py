@@ -51,8 +51,12 @@ scores = cross_validate(exported_pipeline, X, y, cv=10,\
                         scoring=('accuracy','f1', 'precision', 'recall'),
                         return_train_score=True)
 
-import pdb;pdb.set_trace()
 
+for score in scores:
+    print(f"\nScore: {score}")
+    print(scores[score])
+
+import pdb;pdb.set_trace()
 print("[!] Training RandomOverSampler()...")
 #exported_pipeline.fit(X_train_resampled, y_train_resampled)
 #results_tr = exported_pipeline.predict(X_train)
