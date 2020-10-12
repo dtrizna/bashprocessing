@@ -11,7 +11,7 @@ with open(r'data/nl2bash.cm', encoding='utf-8') as f:
 
 p = Parser(debug=True, verbose=True)
 
-counted, corpus = p.parse(data[0:100])
+counted, corpus = p.tokenize(data[0:100])
 
 print("\n", "Total unique elements found: ", len(counted))
 print(counted.most_common(5))
