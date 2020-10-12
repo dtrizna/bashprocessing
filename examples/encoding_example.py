@@ -3,11 +3,22 @@ from os import path
 
 scriptpath = ".."
 sys.path.append(path.abspath(scriptpath))
+scriptpath = "."
+sys.path.append(path.abspath(scriptpath))
 
 from bashprocessing import Parser
 
-with open(r'data/nl2bash.cm', encoding='utf-8') as f:
-    data = f.readlines()
+
+def get_data(filepath):
+    try:
+        with open('../' + filepath) as f:
+            data = f.readlines()
+    except FileNotFoundError:
+        with open(filepath) as f:
+            data = f.readlines()
+    return data
+
+data = get_data('data/nl2bash.cm')
 
 p = Parser(debug=True, verbose=True)
 

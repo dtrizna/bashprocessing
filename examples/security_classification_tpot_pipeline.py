@@ -18,13 +18,23 @@ np.random.seed(RANDOM)
 scriptpath = ".."
 sys.path.append(path.abspath(scriptpath))
 
+scriptpath = "."
+sys.path.append(path.abspath(scriptpath))
+
 from bashprocessing import Parser
 
-with open('../data/nl2bash.cm') as f1:
-    benign = f1.readlines()
 
-with open('../data/malicious.cm') as f2:
-    malicious = f2.readlines()
+def get_data(filepath):
+    try:
+        with open('../' + filepath) as f:
+            data = f.readlines()
+    except FileNotFoundError:
+        with open(filepath) as f:
+            data = f.readlines()
+    return data
+
+benign = get_data("data/nl2bash.cm")
+malicious = get_data("data/malicious.cm")
 
 Xcm, y = shuffle(benign + malicious, \
                 [0] * len(benign) + [1] * len(malicious), \
