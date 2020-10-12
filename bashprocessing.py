@@ -1,7 +1,6 @@
 import numpy as np
 import bashlex
 import re
-import nltk
 from collections import Counter, defaultdict
 from sklearn.preprocessing import LabelEncoder
 
