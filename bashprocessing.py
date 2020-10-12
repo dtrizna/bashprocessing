@@ -17,7 +17,6 @@ class Parser():
 
         self.tokenized_node = None
 
-
     def bashlex_wrapper(self, command):
         try:
             nodes = bashlex.parse(command)
@@ -31,7 +30,6 @@ class Parser():
             for element in re.split(r" |,|{|}",command):
                 rude_parse.append(element)
             return rude_parse
-
 
     def update_objects(self, counters, tokens):
         self.global_counter += counters
@@ -87,7 +85,6 @@ class Parser():
         
         return local_cntr, local_tokens
 
-
     def parse_word(self, bashlex_object):
         local_cntr = Counter()
         local_tokens = []
@@ -133,8 +130,7 @@ class Parser():
             local_tokens.append(bashlex_object.word)
 
         return local_cntr, local_tokens
-
-    
+  
     def tokenize(self, data, ret='counter'):
         self.data = data
         self.global_counter = Counter()
@@ -177,7 +173,6 @@ class Parser():
         
         return self.global_counter, self.corpus
     
-
     def encode(self, mode='onehot', corpus=None, cntr=None, top_tokens=100):
         if not corpus or not cntr:
             corpus = self.corpus
